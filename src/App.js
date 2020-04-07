@@ -6,6 +6,8 @@ import "./styles.css";
 import Controls from "./components/Controls";
 import Sea from "./components/Sea";
 import Lights from "./components/Lights";
+import { AirPlane } from "./components/AirPlane";
+import useStore from "./store";
 
 export default function App() {
   return (
@@ -21,10 +23,11 @@ export default function App() {
       }}
     >
       <fog attach='fog' args={[0xf7d9aa, 100, 950]} />
-      <Controls />
-      <Sky />
-      <Sea />
       <Lights />
+      <Sky />
+      <AirPlane />
+      <Sea />
+      <Controls />
     </Canvas>
   );
 }

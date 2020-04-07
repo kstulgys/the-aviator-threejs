@@ -15,10 +15,10 @@ export default function Sea(props) {
       receiveShadow
       ref={mesh}
       rotation={[-Math.PI / 2, 0, 0]}
-      position={[0, -600, 0]}
+      position={[0, -700, 0]}
       {...props}
     >
-      <sphereGeometry attach='geometry' args={[550, 50, 50]} />
+      <cylinderGeometry attach='geometry' args={[600, 600, 800, 40, 10]} />
       <meshPhongMaterial
         attach='material'
         color={Colors.blue}

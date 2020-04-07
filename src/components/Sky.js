@@ -22,7 +22,7 @@ export default function Sky() {
 
           const posX = Math.cos(a) * h;
           const posY = Math.sin(a) * h;
-          const posZ = -500 - Math.random() * 400;
+          const posZ = -400 - Math.random() * 400;
 
           const rotZ = a + Math.PI / 2;
           const size = 1 + Math.random() * 2;
@@ -40,7 +40,7 @@ function Cloud(props) {
   const posX = (i) => i * 15;
   const posYZ = () => Math.random() * 10;
   const rotYZ = () => Math.random() * Math.PI * 2;
-  const getSize = () => 0.4 + Math.random() * 0.6;
+  const getSize = () => 0.1 + Math.random() * 0.9;
 
   return (
     <group {...props}>
