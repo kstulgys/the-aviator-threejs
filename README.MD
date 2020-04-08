@@ -1,6 +1,6 @@
 # The Aviator Threejs
 
-My implementation of [The Aviator](https://tympanus.net/Tutorials/TheAviator/part1.html) game with react-three-fiber (work in progress...)
+My implementation of [The Aviator](https://tympanus.net/Tutorials/TheAviator/index.html) game with react-three-fiber (work in progress...)
 Visit live at https://the-aviator-threejs.netlify.com/
 
 ## Getting Started
