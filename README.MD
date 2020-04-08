@@ -1,7 +1,7 @@
 # The Aviator Threejs
 
-My implementation of [The Aviator](https://tympanus.net/Tutorials/TheAviator/index.html) game with react-three-fiber (work in progress...)
-Visit live at https://the-aviator-threejs.netlify.com/
+My implementation of [The Aviator](https://tympanus.net/Tutorials/TheAviator/index.html) game with a [react reconciler for threejs](https://github.com/react-spring/react-three-fiber).
+[Visit live](https://the-aviator-threejs.netlify.com/). Work in progress...
 
 ## Getting Started
 
