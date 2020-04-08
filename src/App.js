@@ -27,7 +27,7 @@ export default function App() {
       <Sky />
       <AirPlane />
       <Sea />
-      <Controls />
+      {/* <Controls /> */}
     </Canvas>
   );
 }

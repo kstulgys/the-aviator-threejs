@@ -5,7 +5,6 @@ import Colors from "../utils/colors";
 export default function Sky() {
   const groupRef = useRef();
   useFrame(() => {
-    if (!groupRef) return;
     groupRef.current.rotation.z += 0.01;
   });
 
@@ -61,8 +60,15 @@ function Cloud(props) {
 }
 
 function CloudBlock(props) {
+  const blockRef = useRef();
+
+  useFrame(() => {
+    blockRef.current.rotation.x += 0.01;
+    blockRef.current.rotation.y += 0.01;
+    blockRef.current.rotation.z += 0.01;
+  });
   return (
-    <mesh {...props}>
+    <mesh {...props} ref={blockRef}>
       <boxGeometry attach='geometry' args={[20, 20, 20]} />
       <meshPhongMaterial attach='material' color={Colors.white} />
     </mesh>
