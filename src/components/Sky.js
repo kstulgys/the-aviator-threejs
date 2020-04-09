@@ -5,27 +5,24 @@ import Colors from "../utils/colors";
 export default function Sky() {
   const groupRef = useRef();
   useFrame(() => {
-    groupRef.current.rotation.z += 0.01;
+    groupRef.current.rotation.z += 0.005;
   });
 
   const nClouds = 20;
   const stepAngle = (Math.PI * 2) / nClouds;
 
   return (
-    <group position={[0, -700, 200]} ref={groupRef}>
+    <group position={[0, -1300, 200]} ref={groupRef}>
       {Array(nClouds)
         .fill(null)
         .map((cloud, i) => {
           const a = stepAngle * i;
-          const h = 750 + Math.random() * 300;
-
+          const h = 1300 + Math.random() * 325;
           const posX = Math.cos(a) * h;
           const posY = Math.sin(a) * h;
-          const posZ = -400 - Math.random() * 200;
-
+          const posZ = -250 - Math.random() * 300;
           const rotZ = a + Math.PI / 2;
           const size = 1 + Math.random() * 2;
-
           return (
             <Cloud
               key={i}

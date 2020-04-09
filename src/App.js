@@ -8,10 +8,12 @@ import Sea from "./components/Sea";
 import Lights from "./components/Lights";
 import { AirPlane } from "./components/AirPlane";
 import useStore from "./store";
+import Enemies from "./components/Enemies";
 
 export default function App() {
   return (
     <Canvas
+      style={{ background: "linear-gradient(#e4e0ba, #f7d9aa)" }}
       shadowMap
       gl={{ alpha: true, antialias: true }}
       camera={{
@@ -26,8 +28,9 @@ export default function App() {
       <Lights />
       <Sky />
       <AirPlane />
+      <Enemies />
       <Sea />
-      {/* <Controls /> */}
+      <Controls />
     </Canvas>
   );
 }
