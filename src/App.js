@@ -15,7 +15,7 @@ export default function App() {
       shadowMap
       gl={{ alpha: true, antialias: true }}
       camera={{
-        position: [0, 0, 100],
+        position: [0, 0, 200],
         near: 1,
         fov: 60,
         far: 10000,

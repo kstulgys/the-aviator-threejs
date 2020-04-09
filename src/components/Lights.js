@@ -16,8 +16,6 @@ export default function Lights() {
     ref.current.shadow.mapSize.height = 2048;
   }, []);
 
-  console.log({ ref });
-
   return (
     <>
       <hemisphereLight args={[0xaaaaaa, 0x000000, 0.9]} />

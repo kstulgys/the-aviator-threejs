@@ -3,16 +3,7 @@ import { Canvas, useFrame, useResource, extend, useThree } from "react-three-fib
 import Colors from "../utils/colors";
 import { Color } from "three";
 import useStore from "../store";
-
-function normalize(v, vmin, vmax, tmin, tmax) {
-  const nv = Math.max(Math.min(v, vmax), vmin);
-  const dv = vmax - vmin;
-  const pc = (nv - vmin) / dv;
-  const dt = tmax - tmin;
-  const tv = tmin + pc * dt;
-  return tv;
-}
-
+import { a, useTrail } from "react-spring/three";
 export function AirPlane() {
   const airplaneRef = useRef();
 
@@ -31,9 +22,12 @@ export function AirPlane() {
   } = useThree();
 
   useFrame(() => {
-    // airplaneRef.current.rotation.y += 0.01;
-    airplaneRef.current.position.x = normalize(mouse.x, -1, 1, -100, 100);
-    airplaneRef.current.position.y = normalize(mouse.y, -1, 1, -40, 45);
+    const currentY = mouse.y > -0.8 ? mouse.y * size.height * 0.1 : mouse.y * size.height * 0.085;
+    const prevY = airplaneRef.current.position.y;
+    airplaneRef.current.position.y += (currentY - prevY) * 0.1;
+    airplaneRef.current.rotation.z = (currentY - prevY) * 0.012;
+    camera.fov = -mouse.x * 15 + 60;
+    camera.updateProjectionMatrix();
   });
 
   return (
@@ -50,12 +44,6 @@ export function AirPlane() {
 
 function Cabin() {
   const geometryRef = useRef();
-
-  console.log({ geometryRef });
-
-  useFrame(() => {
-    // airplaneRef.current.position.y = normalize(mouse.y, -1, 1, -40, 45);
-  });
 
   useEffect(() => {
     if (!geometryRef.current) return;
@@ -90,7 +78,7 @@ function Tail() {
   return (
     <mesh castShadow receiveShadow position={[-40, 20, 0]}>
       <boxGeometry attach='geometry' args={[15, 20, 5]} />
-      <meshPhongMaterial attach='material' color={Colors.white} flatShading />
+      <meshPhongMaterial attach='material' color={Colors.red} flatShading />
     </mesh>
   );
 }

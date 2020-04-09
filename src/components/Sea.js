@@ -34,10 +34,10 @@ export default function Sea(props) {
       receiveShadow
       ref={mesh}
       rotation={[-Math.PI / 2, 0, 0]}
-      position={[0, -700, 0]}
+      position={[0, -1300, 0]}
       {...props}
     >
-      <cylinderGeometry attach='geometry' args={[600, 600, 800, 40, 10]} ref={geometryRef} />
+      <cylinderGeometry attach='geometry' args={[1200, 1200, 800, 40, 10]} ref={geometryRef} />
       <meshPhongMaterial
         attach='material'
         color={Colors.blue}

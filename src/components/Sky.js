@@ -17,17 +17,22 @@ export default function Sky() {
         .fill(null)
         .map((cloud, i) => {
           const a = stepAngle * i;
-          const h = 750 + Math.random() * 200;
+          const h = 750 + Math.random() * 300;
 
           const posX = Math.cos(a) * h;
           const posY = Math.sin(a) * h;
-          const posZ = -400 - Math.random() * 400;
+          const posZ = -400 - Math.random() * 200;
 
           const rotZ = a + Math.PI / 2;
           const size = 1 + Math.random() * 2;
 
           return (
-            <Cloud position={[posX, posY, posZ]} rotation-z={rotZ} scale={[size, size, size]} />
+            <Cloud
+              key={i}
+              position={[posX, posY, posZ]}
+              rotation-z={rotZ}
+              scale={[size, size, size]}
+            />
           );
         })}
     </group>
@@ -49,6 +54,7 @@ function Cloud(props) {
           const size = getSize();
           return (
             <CloudBlock
+              key={i}
               position={[posX(i), posYZ(), posYZ()]}
               rotation={[0, rotYZ(), rotYZ()]}
               scale={[size, size, size]}
