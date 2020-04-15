@@ -9,6 +9,7 @@ import Lights from "./components/Lights";
 import { AirPlane } from "./components/AirPlane";
 import useStore from "./store";
 import Enemies from "./components/Enemies";
+import { Physics } from "use-cannon";
 
 export default function App() {
   return (
@@ -24,11 +25,13 @@ export default function App() {
         isPerspectiveCamera: true,
       }}
     >
-      <fog attach='fog' args={[0xf7d9aa, 100, 950]} />
+      {/* <fog attach='fog' args={[0xf7d9aa, 100, 950]} /> */}
       <Lights />
       <Sky />
-      <AirPlane />
-      <Enemies />
+      <Physics>
+        <AirPlane />
+        <Enemies />
+      </Physics>
       <Sea />
       <Controls />
     </Canvas>

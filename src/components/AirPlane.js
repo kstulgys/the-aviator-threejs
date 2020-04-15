@@ -4,9 +4,9 @@ import Colors from "../utils/colors";
 import { Color } from "three";
 import useStore from "../store";
 import { a, useTrail } from "react-spring/three";
-export function AirPlane() {
-  const airplaneRef = useRef();
+import { useBox } from "use-cannon";
 
+export function AirPlane() {
   const {
     gl, // WebGL renderer
     scene, // Default scene
@@ -21,11 +21,19 @@ export function AirPlane() {
     setDefaultCamera, // Sets the default camera
   } = useThree();
 
+  const [airplaneRef, api] = useBox(() => ({
+    mass: 0,
+    type: "Kinematic",
+    onCollide: (e) => console.log({ e }),
+  }));
+
   useFrame(() => {
     const currentY = mouse.y > -0.8 ? mouse.y * size.height * 0.1 : mouse.y * size.height * 0.085;
     const prevY = airplaneRef.current.position.y;
-    airplaneRef.current.position.y += (currentY - prevY) * 0.1;
-    airplaneRef.current.rotation.z = (currentY - prevY) * 0.012;
+    const Y = airplaneRef.current.position.y + (currentY - prevY) * 0.1;
+    api.position.set(0, Y, 0);
+    api.rotation.set(0, 0, (currentY - prevY) * 0.012);
+
     camera.fov = -mouse.x * 15 + 60;
     camera.updateProjectionMatrix();
   });
